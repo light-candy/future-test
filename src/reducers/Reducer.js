@@ -11,6 +11,7 @@ import {
   START_SEARCH,
   SORT_DATA
 } from '../actions/actionTypes';
+import { nanoid } from 'nanoid';
 
 const initialState = {
     dataset: 'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}',
@@ -43,13 +44,16 @@ export default function Reducer(state = initialState, action) {
     case OPEN_ADD_FORM:
       return { ...state, formOpen: true };
     case CHANGE_INPUT_FIELD:
-      const { newitem } = action.payload;
-      return { ...state, item: newitem };
+      const { name, value } = action.payload;
+      return { ...state, item: { ...state.item, [name]: value } };
     case ADD_ITEM:
       const { item } = action.payload;
-      const appended = [ item, ...state.data];
+      const initItem = { ...item, nanoId:nanoid() };
+      const appended = [initItem, ...state.data];
       return {
         ...state,
+        item:{},
+        formOpen:false,
         data: appended,
         filtered: appended.filter((o) =>
           (o.id.toString().includes(state.search) ||

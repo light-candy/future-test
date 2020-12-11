@@ -16,8 +16,9 @@ export function AddRecord() {
     event.preventDefault();
     dispatch(addItem(item));
   };
-  const handleChange = () => {
-    dispatch(changeInputField('a', 'a', 'a', 'a', 'a'));
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    dispatch(changeInputField(name, value));
   };
    
   return(

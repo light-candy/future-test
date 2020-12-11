@@ -36,8 +36,8 @@ export function changeSearchField(search) {
 export function openAddForm() {
     return { type: OPEN_ADD_FORM };
 }
-export function changeInputField(id, firstName, lastName, email, phone) {
-  return { type: CHANGE_INPUT_FIELD, payload: { id, firstName, lastName, email, phone } };
+export function changeInputField(name, value) {
+  return { type: CHANGE_INPUT_FIELD, payload: { name, value } };
 }
 export function addItem(item) {
   return { type: ADD_ITEM, payload: { item } };
