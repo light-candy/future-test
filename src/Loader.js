@@ -2,6 +2,8 @@ import React from 'react';
 
 export function Loader() {
   return(
-          <p>Loading...</p>
+    <div className="loader-wrapper">
+    <div className="loader"></div>
+    </div>
   );
 }

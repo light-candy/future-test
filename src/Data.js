@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchDataRequest,
@@ -24,8 +25,10 @@ export function Data(props){
         if (!response.ok) {
           throw new Error(response.statusText);
         }
-        const data = await response.json();
-        dispatch(fetchDataSuccess(data));
+        const fetchedData = await response.json();
+        console.log(fetchedData);
+        fetchedData.map((o) => o.nanoId = nanoid());
+        dispatch(fetchDataSuccess(fetchedData));
       } catch (error) {
         dispatch(fetchDataFailure(error.message));
       }

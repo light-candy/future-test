@@ -7,7 +7,7 @@ import { Loader } from './Loader';
 
 export function Table(){
   const dispatch = useDispatch();
-  const { data, filtered, dataLoading } = useSelector(state => state);
+  const { data, filtered, dataLoading, selectedId } = useSelector(state => state);
 
   const handleClick = (id) => {
    dispatch(selectItem(id));
@@ -22,7 +22,8 @@ export function Table(){
 
   return(
     <>
-      {(dataLoading) ? <Loader /> : <table>
+      {(dataLoading) ? <Loader /> : <div className="table-wrapper">
+       <table className="table">
         <thead>
           <tr>
             <th>id</th>
@@ -33,7 +34,11 @@ export function Table(){
           </tr>
         </thead>
         <tbody>
-          {items().map((o) => <tr key={o.id} onClick={() => handleClick(o.id)}>
+          {items().map((o) => <tr
+            key={o.nanoId}
+            onClick={() => handleClick(o.nanoId)}
+            className={(selectedId === o.nanoId) ? "table__row_active" : "table__row"}
+          >
             <td>{o.id}</td>
             <td>{o.firstName}</td>
             <td>{o.lastName}</td>
@@ -42,7 +47,8 @@ export function Table(){
           </tr>
           )}
         </tbody>
-      </table>}
+      </table>
+      </div>}
     </>
   );
 }

@@ -20,9 +20,9 @@ export function Filter() {
     dispatch(changeSearchField(''));
   }
   return(
-    <form onSubmit={handleSubmit}>
-     <input type="text" value={search} onChange={handleChange} />
-      <input type="submit" value="Найти" />
+    <form onSubmit={handleSubmit} className="filter">
+     <input type="text" value={search} onChange={handleChange} className="filter__input"/>
+      <input type="submit" value="Найти" className="filter__button"/>
     </form>
   );
 }

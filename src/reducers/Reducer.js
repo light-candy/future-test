@@ -18,7 +18,7 @@ const initialState = {
     data: [],
     dataLoading: false,
     dataError: null,
-    selectedId: 0,
+    selectedId: '',
     details: {},
     formOpen: false,
     item: {},
@@ -42,7 +42,7 @@ export default function Reducer(state = initialState, action) {
       return { ...state, dataError: action.payload.error };
     case SELECT_ITEM:
       const { selectedId } = action.payload;
-      const details = { ...state.data.find((o) => (o.id === selectedId)) };
+      const details = { ...state.data.find((o) => (o.nanoId === selectedId)) };
       return { ...state, selectedId, details };
     case OPEN_ADD_FORM:
       return { ...state, formOpen: true };

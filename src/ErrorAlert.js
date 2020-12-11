@@ -2,6 +2,6 @@ import React from 'react';
 
 export function ErrorAlert() {
   return(
-      <p>Proizhoshla oshibka!</p>
+      <div className="error">Произошла ошибка!</div>
   );
 }

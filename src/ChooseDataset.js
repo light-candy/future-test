@@ -13,15 +13,20 @@ export function ChooseDataset() {
       dispatch(submitSelectDataset(dataset));
   }
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="choose-dataset">
+    <div className="choose-dataset__inputs">
+    <div>
     <input type="radio" id="smallDataset"
      name="dataset" value="small" onChange={handleChange} />
-    <label htmlFor="smallDataset">Small</label>
-
+    <label htmlFor="smallDataset">Маленький</label>
+    </div>
+    <div>
     <input type="radio" id="largeDataset"
      name="dataset" value="large" onChange={handleChange} />
-    <label htmlFor="largeDataset">Large</label>
-    <input type="submit" value="Load data!" />
+    <label htmlFor="largeDataset">Большой</label>
+    </div>
+    </div>
+    <input type="submit" value="Загрузить данные!" className="choose-dataset__button" />
     </form>
   );
 }
