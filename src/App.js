@@ -9,8 +9,10 @@ function App() {
   return (
     <>
    <ChooseDataset />
+   <div className="inputs__panel">
    <AddRecord />
    <Filter />
+    </div>
    <Data />
    <Details />
       </>

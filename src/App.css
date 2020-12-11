@@ -52,6 +52,7 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
+  padding:3em;
 }
 .loader {
   border: 16px solid #fff;
@@ -76,6 +77,11 @@ body{
   padding:3em;
   margin-bottom: 25px;
 }
+.inputs__panel{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+}
 .add-record{
   display:flex;
   align-items:center;
@@ -92,8 +98,12 @@ body{
   margin-bottom:15px;
   margin-right:15px;
 }
+.add-record__group input{
+  padding:0.5em;
+}
 .add-record__button{
   margin-bottom:15px;
+  margin-right:15px;
   background:linear-gradient(to bottom, #6930c3, #5390d9);
   color:#fff;
   font-weight:bold;
@@ -137,19 +147,16 @@ body{
   border-radius:8px;
   border:3px solid #6930c3;
   display:flex;
-  margin-bottom:25px;
-  align-items:center;
-}
-.choose-dataset__inputs{
-  display:flex;
   flex-direction:column;
-  margin-right:15px;
+  margin-bottom:25px;
+  align-items:flex-start;
 }
-.choose-dataset__inputs label{
+
+.choose-dataset label{
   font-size:14px;
   cursor:pointer;
 }
-.choose-dataset__inputs input{
+.choose-dataset input{
   cursor:pointer;
 }
 .choose-dataset__button{

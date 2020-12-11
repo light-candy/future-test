@@ -1,6 +1,5 @@
 import {
     SELECT_DATASET,
-    SUBMIT_SELECT_DATASET,
     FETCH_DATA_REQUEST,
     FETCH_DATA_SUCCESS,
     FETCH_DATA_FAILURE,
@@ -15,9 +14,6 @@ import {
 
 export function selectDataset(dataset) {
   return { type: SELECT_DATASET, payload: { dataset } };
-}
-export function submitSelectDataset(selectedDataset){
-  return { type: SUBMIT_SELECT_DATASET, payload: { selectedDataset } };
 }
 export function fetchDataRequest() {
   return { type: FETCH_DATA_REQUEST };

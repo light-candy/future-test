@@ -1,6 +1,5 @@
 import {
   SELECT_DATASET,
-  SUBMIT_SELECT_DATASET,
   FETCH_DATA_REQUEST,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAILURE,
@@ -14,7 +13,7 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-    dataset: '',
+    dataset: 'http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}',
     data: [],
     dataLoading: false,
     dataError: null,
@@ -29,17 +28,14 @@ export default function Reducer(state = initialState, action) {
   switch (action.type) {
     case SELECT_DATASET:
       const { dataset } = action.payload;
-      return { ...state, dataset };
-    case SUBMIT_SELECT_DATASET:
-      const { selectedDataset } = action.payload;
-      return { ...state, selectedDataset };
+      return { ...state, dataset, selectedId:'' };
     case FETCH_DATA_REQUEST:
-      return { ...state, dataError: null };
+      return { ...state, dataError: null, dataLoading:true };
     case FETCH_DATA_SUCCESS:
       const { data } = action.payload;
-      return { ...state, data, dataError: null };
+      return { ...state, data, dataError: null, dataLoading:false };
     case FETCH_DATA_FAILURE:
-      return { ...state, dataError: action.payload.error };
+      return { ...state, dataError: action.payload.error, dataLoading:false };
     case SELECT_ITEM:
       const { selectedId } = action.payload;
       const details = { ...state.data.find((o) => (o.nanoId === selectedId)) };

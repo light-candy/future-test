@@ -12,16 +12,15 @@ import { ErrorAlert } from './ErrorAlert';
 export function Data(props){
  const dispatch = useDispatch();
  const {
-   data,
    dataError,
-   dataLoading
+   dataset
  } = useSelector(state => state);
 
  useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch(fetchDataRequest());
-        const response = await fetch('http://www.filltext.com/?rows=32&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}');
+          const response = await fetch(dataset);
         if (!response.ok) {
           throw new Error(response.statusText);
         }
@@ -33,8 +32,8 @@ export function Data(props){
         dispatch(fetchDataFailure(error.message));
       }
     };
-    fetchData(props.url);
-  }, [props.url, dispatch]);
+    fetchData();
+  }, [dispatch, dataset]);
 
   return(
     <>
