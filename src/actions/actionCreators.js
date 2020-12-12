@@ -9,7 +9,8 @@ import {
     ADD_ITEM,
     CHANGE_SEARCH_FIELD,
     START_SEARCH,
-    SORT_DATA
+  SORT_DATA,
+  SET_CURRENT_PAGE,
 } from './actionTypes';
 
 export function selectDataset(dataset) {
@@ -27,11 +28,11 @@ export function fetchDataFailure(error) {
 export function selectItem(selectedId) {
   return { type: SELECT_ITEM, payload: { selectedId } };
 }
-export function sortData(column, order) {
-  return { type: SORT_DATA, payload: { column, order } };
+export function sortData(sorted) {
+  return { type: SORT_DATA, payload: { sorted } };
 }
-export function startSearch(search) {
-  return { type: START_SEARCH, payload: { search } };
+export function startSearch(search, filtered) {
+  return { type: START_SEARCH, payload: { search, filtered } };
 }
 export function changeSearchField(search) {
   return { type: CHANGE_SEARCH_FIELD, payload: { search } };
@@ -44,4 +45,7 @@ export function changeInputField(name, value) {
 }
 export function addItem(item) {
   return { type: ADD_ITEM, payload: { item } };
+}
+export function setCurrentPage(n, onPage) {
+  return { type:SET_CURRENT_PAGE, payload: { n, onPage } };
 }

@@ -14,3 +14,5 @@ export const CHANGE_SEARCH_FIELD = 'CHANGE_SEARCH_FIELD';
 export const START_SEARCH = 'START_SEARCH';
 
 export const SORT_DATA = 'SORT_DATA';
+
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';

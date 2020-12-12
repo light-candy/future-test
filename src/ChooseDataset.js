@@ -4,7 +4,7 @@ import { selectDataset } from './actions/actionCreators';
 
 export function ChooseDataset() {
   const dispatch = useDispatch();
-  const { dataset } = useSelector(state => state);
+  const { dataset } = useSelector(state => state.datasetRed);
   const handleChange = (event) => {
     dispatch(selectDataset(event.target.value));
   }

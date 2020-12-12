@@ -8,7 +8,7 @@ import {
 
 export function AddRecord() {
   const dispatch = useDispatch();
-  const { item, formOpen } = useSelector(state => state);
+  const { item, formOpen } = useSelector(state => state.addItemRed);
   const openForm = () => {
     dispatch(openAddForm());
   };

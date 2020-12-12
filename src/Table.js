@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectItem, sortData } from './actions/actionCreators';
+import { selectItem, sortData, setCurrentPage } from './actions/actionCreators';
 import { Loader } from './Loader';
 
 export function Table(){
   const dispatch = useDispatch();
-  const { data, filtered, dataLoading, selectedId } = useSelector(state => state);
+  const { data, filtered, dataLoading, selectedId } = useSelector(state => state.dataRed);
+  const { onPage, currentPage } = useSelector(state => state.paginationRed);
   const [idOrder, setIdOrder] = useState('');
   const [firstNameOrder, setFirstNameOrder] = useState('');
   const [lastNameOrder, setLastNameOrder] = useState('');
@@ -23,18 +24,29 @@ export function Table(){
     setOrder('asc');
   }
 };
+
+
+
   const handleSort = (column, order, setOrder) => {
-    dispatch(sortData(column, order));
-    switchOrder(order, setOrder)
+     const compareFunc = (a, b) => {
+          if (order === 'asc') {
+            return ((a[column] < b[column]) - (a[column] > b[column]));
+          } else {
+            return ((a[column] > b[column]) - (a[column] < b[column]));
+          }
+        };
+    const sorted = (filtered) ? filtered.sort(compareFunc) : data.sort(compareFunc);
+    dispatch(sortData(sorted));
+    switchOrder(order, setOrder);
   };
  
-  const items = () => {
-    if (!filtered) {
-      return data;
-    } else {
-      return filtered;
-    }
-  };
+//const items = () => {
+//  if (!onPage.length) {
+//    return data;
+//  } else {
+//   return onPage;
+//  }
+// };
 
 
 
@@ -72,7 +84,7 @@ export function Table(){
           </tr>
         </thead>
         <tbody>
-          {items().map((o) => <tr
+          {onPage.map((o) => <tr
             key={o.nanoId}
             onClick={() => handleClick(o.nanoId)}
             className={(selectedId === o.nanoId) ? "table__row_active" : "table__row"}

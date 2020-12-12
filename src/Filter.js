@@ -9,14 +9,21 @@ export function Filter() {
   const dispatch = useDispatch();
   const {
     search,
-  } = useSelector(state => state);
+  } = useSelector(state => state.searchRed);
+  const { data } = useSelector(state => state.dataRed)
   const handleChange = (event) => {
     dispatch(changeSearchField(event.target.value));
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(startSearch(search));
+    const filtered = data.filter((o) =>
+              (o.id.toString().includes(search) ||
+               o.firstName.toLowerCase().includes(search) ||
+               o.lastName.toLowerCase().includes(search) ||
+               o.phone.includes(search) ||
+               o.email.toLowerCase().includes(search)));
+    dispatch(startSearch(search, filtered));
     dispatch(changeSearchField(''));
   }
   return(

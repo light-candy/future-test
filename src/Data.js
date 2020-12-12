@@ -4,17 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchDataRequest,
   fetchDataSuccess,
-  fetchDataFailure
+  fetchDataFailure,
 } from './actions/actionCreators';
-import { Table } from './Table';
 import { ErrorAlert } from './ErrorAlert';
 
 export function Data(props){
  const dispatch = useDispatch();
- const {
-   dataError,
-   dataset
- } = useSelector(state => state);
+ const { dataError } = useSelector(state => state.dataRed);
+ const { dataset } = useSelector(state => state.datasetRed);
+
+
 
  useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +24,6 @@ export function Data(props){
           throw new Error(response.statusText);
         }
         const fetchedData = await response.json();
-        console.log(fetchedData);
         fetchedData.map((o) => o.nanoId = nanoid());
         dispatch(fetchDataSuccess(fetchedData));
       } catch (error) {
@@ -38,7 +36,6 @@ export function Data(props){
   return(
     <>
      {(dataError) ? <ErrorAlert /> : null}
-     <Table />
     </>
   );
 }

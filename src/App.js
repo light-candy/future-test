@@ -3,6 +3,8 @@ import { Details } from './Details';
 import { AddRecord } from './AddRecord';
 import { Filter } from './Filter';
 import { ChooseDataset } from './ChooseDataset';
+import { Pagination } from './Pagination';
+import { Table } from './Table';
 import './App.css';
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
    <Filter />
     </div>
    <Data />
+   <Table />
+   <Pagination />
    <Details />
       </>
   );
