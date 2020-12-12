@@ -40,6 +40,7 @@ a {
 input{
   box-sizing:border-box;
 }
+/* end of resets */
 body{
   padding:1em;
 }

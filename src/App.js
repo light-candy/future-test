@@ -1,25 +1,25 @@
-import { Data } from './Data';
-import { Details } from './Details';
-import { AddRecord } from './AddRecord';
-import { Filter } from './Filter';
-import { ChooseDataset } from './ChooseDataset';
-import { Pagination } from './Pagination';
-import { Table } from './Table';
+import { Data } from './components/Data';
+import { Details } from './components/Details';
+import { AddRecord } from './components/AddRecord';
+import { Filter } from './components/Filter';
+import { ChooseDataset } from './components/ChooseDataset';
+import { Pagination } from './components/Pagination';
+import { Table } from './components/Table';
 import './App.css';
 
 function App() {
-  return (
+  return(
     <>
-   <ChooseDataset />
-   <div className="inputs__panel">
-   <AddRecord />
-   <Filter />
-    </div>
-   <Data />
-   <Table />
-   <Pagination />
-   <Details />
-      </>
+      <ChooseDataset />
+      <div className="inputs__panel">
+        <AddRecord />
+        <Filter />
+      </div>
+      <Data />
+      <Table />
+      <Pagination />
+      <Details />
+    </>
   );
 }
 

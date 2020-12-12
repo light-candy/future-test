@@ -11,7 +11,7 @@ export const CHANGE_INPUT_FIELD = 'CHANGE_INPUT_FIELD';
 export const ADD_ITEM = 'ADD_ITEM';
 
 export const CHANGE_SEARCH_FIELD = 'CHANGE_SEARCH_FIELD';
-export const START_SEARCH = 'START_SEARCH';
+export const FILTER_DATA = 'FILTER_DATA';
 
 export const SORT_DATA = 'SORT_DATA';
 

@@ -5,11 +5,11 @@ const initialState = {
 }
 
 export default function datasetReducer(state = initialState, action) {
-    switch (action.type) {
-      case SELECT_DATASET:
+  switch (action.type) {
+    case SELECT_DATASET:
       const { dataset } = action.payload;
       return { ...state, dataset};
-        default:
-            return state;
-    }
-}
+    default:
+      return state;
+  }
+};

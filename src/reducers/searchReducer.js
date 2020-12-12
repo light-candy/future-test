@@ -1,7 +1,7 @@
 import { CHANGE_SEARCH_FIELD } from '../actions/actionTypes';
 
 const initialState = {
-    search:'',
+  search:'',
 };
 
 export default function searchReducer(state = initialState, action) {

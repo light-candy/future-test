@@ -6,11 +6,11 @@ import datasetReducer from '../reducers/datasetReducer';
 import searchReducer from '../reducers/searchReducer';
 
 const reducer = combineReducers({
-    dataRed: dataReducer,
-    paginationRed: paginationReducer,
-    addItemRed: addItemReducer,
-    datasetRed: datasetReducer,
-    searchRed: searchReducer
+  dataRed: dataReducer,
+  paginationRed: paginationReducer,
+  addItemRed: addItemReducer,
+  datasetRed: datasetReducer,
+  searchRed: searchReducer
 });
 
 const store = createStore(reducer);

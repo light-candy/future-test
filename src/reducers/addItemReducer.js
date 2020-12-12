@@ -17,8 +17,8 @@ export default function addItemReducer(state = initialState, action) {
       const { name, value } = action.payload;
       return { ...state, item: { ...state.item, [name]: value } };
     case ADD_ITEM:
-          return { ...state, item:{}, formOpen:false };
+      return { ...state, item:{}, formOpen:false };
     default:
-          return state;
-    }
+      return state;
+  }
 };

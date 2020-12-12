@@ -5,21 +5,19 @@ import {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
-} from './actions/actionCreators';
+} from '../actions/actionCreators';
 import { ErrorAlert } from './ErrorAlert';
 
-export function Data(props){
- const dispatch = useDispatch();
- const { dataError } = useSelector(state => state.dataRed);
- const { dataset } = useSelector(state => state.datasetRed);
+export function Data(){
+  const dispatch = useDispatch();
+  const { dataError } = useSelector(state => state.dataRed);
+  const { dataset } = useSelector(state => state.datasetRed);
 
-
-
- useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         dispatch(fetchDataRequest());
-          const response = await fetch(dataset);
+        const response = await fetch(dataset);
         if (!response.ok) {
           throw new Error(response.statusText);
         }
@@ -35,7 +33,7 @@ export function Data(props){
 
   return(
     <>
-     {(dataError) ? <ErrorAlert /> : null}
+      {(dataError) ? <ErrorAlert /> : null}
     </>
   );
 }
