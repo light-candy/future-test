@@ -22,8 +22,7 @@ const initialState = {
     details: {},
     formOpen: false,
     item: {},
-    search:'',
-    order:'asc'
+    search:''
 };
 export default function Reducer(state = initialState, action) {
   switch (action.type) {
@@ -48,7 +47,7 @@ export default function Reducer(state = initialState, action) {
       return { ...state, item: { ...state.item, [name]: value } };
     case ADD_ITEM:
       const { item } = action.payload;
-      const initItem = { ...item, nanoId:nanoid() };
+      const initItem = { ...item, id:parseInt(item.id), nanoId:nanoid() };
       const appended = [initItem, ...state.data];
       return {
         ...state,
@@ -62,6 +61,20 @@ export default function Reducer(state = initialState, action) {
           o.phone.includes(state.search) ||
           o.email.toLowerCase().includes(state.search)))
       };
+    case SORT_DATA:
+      const { column, order } = action.payload;
+      const compareFunc = (a, b) => {
+        if (order === 'asc') {
+          return ((a[column] < b[column]) - (a[column] > b[column]));
+        } else {
+          return ((a[column] > b[column]) - (a[column] < b[column]));
+        }
+      };
+      return {
+        ...state,
+        data: state.data.sort(compareFunc),
+        filtered: (state.filtered) ? state.filtered.sort(compareFunc) : state.data.sort(compareFunc)}
+                        
     case CHANGE_SEARCH_FIELD:
       return { ...state, search: action.payload.search };
     case START_SEARCH:

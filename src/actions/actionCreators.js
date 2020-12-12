@@ -27,6 +27,9 @@ export function fetchDataFailure(error) {
 export function selectItem(selectedId) {
   return { type: SELECT_ITEM, payload: { selectedId } };
 }
+export function sortData(column, order) {
+  return { type: SORT_DATA, payload: { column, order } };
+}
 export function startSearch(search) {
   return { type: START_SEARCH, payload: { search } };
 }

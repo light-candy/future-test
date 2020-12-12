@@ -192,6 +192,11 @@ body{
   border-top: 1px solid #6930c5;
   background-color: #6930c5;
 }
+
+.material-icons{
+  margin-left:8px;
+  vertical-align:middle;
+}
 .table td{
   padding: .75rem;
   vertical-align: top;
