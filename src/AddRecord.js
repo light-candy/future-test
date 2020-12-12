@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { nanoid } from 'nanoid';
 import {
   openAddForm,
   changeInputField,
@@ -14,7 +15,8 @@ export function AddRecord() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addItem(item));
+    const initItem = { ...item, id:parseInt(item.id), nanoId:nanoid() };
+    dispatch(addItem(initItem));
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -80,7 +82,12 @@ export function AddRecord() {
           className="add-record__input"
         />
       </div>
-      <input type="submit" value="Добавить в таблицу" className="add-record__button" />
+      <input
+        type="submit"
+        value="Добавить в таблицу"
+        className="add-record__button"
+        disabled={!(item.id && item.firstName && item.lastName && item.email && item.phone)}
+      />
       </form> : <button onClick={openForm} className="add-record__button">Добавить</button>}
       </>
   );

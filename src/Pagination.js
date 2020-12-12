@@ -13,7 +13,7 @@ export function Pagination() {
   const pageNumbers = Array.from(Array(totalPages).keys());
 
   const goToPage = (n) => {
-    const onNewPage =(filtered) ? filtered.slice(maxPerPage * n, maxPerPage * (n + 1) - 1) : data.slice(maxPerPage * n, maxPerPage * (n + 1) - 1);
+    const onNewPage =(filtered) ? filtered.slice(maxPerPage * n, maxPerPage * (n + 1)) : data.slice(maxPerPage * n, maxPerPage * (n + 1));
     dispatch(setCurrentPage(n, onNewPage));
   }
  const nextPage = () => {
@@ -27,7 +27,7 @@ return(
       <>
         {(!data || data.length <= 50) ? null :
         <div>
-       <button onClick={prevPage} className="pagination__arrow">
+         <button onClick={prevPage} className="pagination__arrow" disabled={(currentPage === 0)}>
           <span class="material-icons">
          west
          </span>
@@ -40,7 +40,7 @@ return(
                   >
           {a + 1}</button>
           )}
-       <button onClick={nextPage} className="pagination__arrow">
+         <button onClick={nextPage} className="pagination__arrow" disabled={(currentPage === totalPages - 1)}>
           <span class="material-icons">
         east
          </span>

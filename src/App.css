@@ -119,6 +119,10 @@ body{
 .add-record__button:active {
   background:linear-gradient(to bottom, #6930c3, #6930c3);
 }
+.add-record__button:disabled{
+  background:#dccef3;
+  color:#333333;
+}
 .filter__button{
   margin-bottom:15px;
   background:linear-gradient(to bottom, #6930c3, #5390d9);
@@ -177,6 +181,7 @@ body{
 }
 .table-wrapper{
   overflow-x:auto;
+  margin-bottom:25px;
 }
 .table{
   border-collapse: collapse;
@@ -251,11 +256,27 @@ textarea {
   height:44px;
   width:44px;
   text-align:center;
-  margin-right:15px;
+  margin-bottom:15px;
   font-weight:bold;
   cursor:pointer;
+  transition:all 0.3s ease;
+  margin-left:15px;
+}
+.pagination__button:hover{
+  background:#dccef3;
+}
+.pagination__button:active{
+   background:linear-gradient(to bottom, #6930c3, #5390d9);
+  color:#fff;
+}
+.pagination__button:first-child{
+   margin-left:0;
 }
 .pagination__button_active{
+  background:linear-gradient(to bottom, #6930c3, #5390d9);
+  color:#fff;
+}
+.pagination__button_active:hover{
   background:linear-gradient(to bottom, #6930c3, #5390d9);
   color:#fff;
 }
@@ -264,8 +285,18 @@ textarea {
   border:none;
   margin-right:15px;
   margin-left:15px;
+  margin-bottom:15px;
   cursor:pointer;
 }
 .pagination__arrow .material-icons{
   color:#6930c5;
+}
+.pagination__arrow:hover .material-icons{
+  color:#5390d9;
+}
+.pagination__arrow:active .material-icons{
+  color:#6930c5;
+}
+.pagination__arrow:disabled .material-icons{
+  color:#dccef3;
 }

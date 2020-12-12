@@ -17,13 +17,13 @@ export function Filter() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const filtered = data.filter((o) =>
+    const filtered = (search === "") ? data : data.filter((o) =>
               (o.id.toString().includes(search) ||
                o.firstName.toLowerCase().includes(search) ||
                o.lastName.toLowerCase().includes(search) ||
                o.phone.includes(search) ||
                o.email.toLowerCase().includes(search)));
-    dispatch(startSearch(search, filtered));
+    dispatch(startSearch(filtered));
     dispatch(changeSearchField(''));
   }
   return(

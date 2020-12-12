@@ -28,17 +28,15 @@ export default function dataReducer(state = initialState, action) {
       return { ...state, dataError: action.payload.error, dataLoading:false };
     case ADD_ITEM:
       const { item } = action.payload;
-      const initItem = { ...item, id:parseInt(item.id), nanoId:nanoid() };
       return {
         ...state,
-          data: [initItem, ...state.data],
-          filtered: (state.filtered) ? [initItem, ...state.filtered] : null
+          data: [item, ...state.data],
+          filtered: (state.filtered) ? [item, ...state.filtered] : null
       };
      case SORT_DATA:
        const { sorted } = action.payload;
        return {
           ...state,
-          data: sorted,
           filtered: sorted
         };
     case SELECT_ITEM:
@@ -48,18 +46,11 @@ export default function dataReducer(state = initialState, action) {
     case SELECT_DATASET:
             return { ...state, selectedId:'', details:{}, filtered:null };
     case START_SEARCH:
-      const { search, filtered } = action.payload;
-      if (search === "") {
-        return {
-          ...state,
-          filtered:[ ...state.data]
-        };
-      } else {
+      const { filtered } = action.payload;
         return {
           ...state,
           filtered: filtered
-        }
-      };
+        };
     default:
       return state;
     }

@@ -31,8 +31,8 @@ export function selectItem(selectedId) {
 export function sortData(sorted) {
   return { type: SORT_DATA, payload: { sorted } };
 }
-export function startSearch(search, filtered) {
-  return { type: START_SEARCH, payload: { search, filtered } };
+export function startSearch(filtered) {
+  return { type: START_SEARCH, payload: { filtered } };
 }
 export function changeSearchField(search) {
   return { type: CHANGE_SEARCH_FIELD, payload: { search } };
